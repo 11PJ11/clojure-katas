@@ -2,11 +2,14 @@
   (:gen-class)
   (:require [clojure.string :as str]))
 
-(defn parse-int [s]
+(defn- parse-int [s]
   (Integer. (re-find #"[0-9]*" s)))
 
+(defn- split [digits]
+  (str/split digits #",|\n"))
+
 (defn- toInts [digits]
-  (map parse-int (str/split digits #",")))
+  (map parse-int (split digits)))
 
 (defn- sum [numbers]
   (reduce + numbers))
@@ -14,4 +17,6 @@
 (defn str-calc [digits]
   (cond
     (= digits "") 0
-    () (sum (toInts digits))))
+    () (-> digits
+           (toInts)
+           (sum))))
