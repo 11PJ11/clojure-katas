@@ -14,7 +14,17 @@ FIXME: explanation
 
 ## Options
 
-FIXME: listing of options this app accepts.
+Use this lein plugin to run your tests continuously:
+```
+https://github.com/jakemcc/lein-test-refresh
+```
+To start the contunuous runner just use the following command:
+`lein test-refresh`
+
+And this to colorise the output
+```
+https://github.com/venantius/ultra
+```
 
 ## Examples
 
