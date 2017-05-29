@@ -1,46 +1,36 @@
-# fizz-buzz
+# Clojure TDD Katas
 
-FIXME: description
+## Description
+Learning clojure through some basic TDD katas to get used to the language and basic libraries.
 
-## Installation
-
-Download from http://example.com/FIXME.
-
-## Usage
-
-FIXME: explanation
-
-    $ java -jar fizz-buzz-0.1.0-standalone.jar [args]
-
-## Options
+## Might be Useful
 
 Use this lein plugin to run your tests continuously:
-```
-https://github.com/jakemcc/lein-test-refresh
-```
-To start the contunuous runner just use the following command:
-`lein test-refresh`
 
-And this to colorise the output
 ```
-https://github.com/venantius/ultra
+    https://github.com/jakemcc/lein-test-refresh
 ```
 
-## Examples
+To start the contunuous runner just use the following command `lein test-refresh`
 
-...
+And this plugin to improve the output
+```
+    https://github.com/venantius/ultra
+```
 
-### Bugs
+### Example
 
-...
-
-### Any Other Sections
-### That You Think
-### Might be Useful
+ This is an example of a possible `profile.clj` file located at `~/.lein/profiles.clj`
+```
+    {:user 
+        {:plugins
+            [[com.jakemccrary/lein-test-refresh "0.20.0"]
+            [venantius/ultra "0.5.1"]
+            [mvxcvi/whidbey "1.3.1"]]}}
+```
 
 ## License
 
-Copyright © 2017 FIXME
+Copyright © 2017
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the Eclipse Public License either version 1.0 or any later version.
