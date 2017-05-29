@@ -2,21 +2,40 @@
   (:gen-class)
   (:require [clojure.string :as str]))
 
-(defn- parse-int [s]
-  (Integer. (re-find #"[0-9]*" s)))
+(defn- parse-int [str]
+  (Integer. (re-find #"[0-9]*" str)))
+
+(defn- is-custom? [digits]
+  (str/starts-with? digits "//"))
+
+(defn get-delimiters [digits]
+  (cond
+    (is-custom? digits) (re-pattern (subs digits 2 3))
+    () #",|\n"))
+
+(defn get-values [digits]
+  (cond 
+    (is-custom? digits) (second(str/split digits #"\n"))
+    () digits))
+
+(defn- get-delimiters-and-values [digits]
+    [(get-delimiters digits) (get-values digits)])
 
 (defn- split [digits]
-  (str/split digits #",|\n"))
+  (let [[delimiters values] (get-delimiters-and-values digits)]
+    (str/split values delimiters)))
 
-(defn- toInts [digits]
-  (map parse-int (split digits)))
-
+(defn to-ints [digits]
+  (->> digits
+       (split) 
+       (map parse-int)))
+ 
 (defn- sum [numbers]
   (reduce + numbers))
 
 (defn str-calc [digits]
   (cond
     (= digits "") 0
-    () (-> digits
-           (toInts)
-           (sum))))
+    () (->> digits
+            (to-ints)
+            (sum))))
