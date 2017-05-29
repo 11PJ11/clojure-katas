@@ -21,13 +21,13 @@
 (defn- get-delimiters-and-values [digits]
     [(get-delimiters digits) (get-values digits)])
 
-(defn- split [digits]
+(defn- to-single-digits [digits]
   (let [[delimiters values] (get-delimiters-and-values digits)]
     (str/split values delimiters)))
 
 (defn to-ints [digits]
   (->> digits
-       (split) 
+       (to-single-digits) 
        (map parse-int)))
  
 (defn- sum [numbers]
@@ -36,6 +36,4 @@
 (defn str-calc [digits]
   (cond
     (= digits "") 0
-    () (->> digits
-            (to-ints)
-            (sum))))
+    ()(sum (to-ints digits))))
